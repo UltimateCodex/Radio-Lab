@@ -7,17 +7,22 @@ parser = argparse.ArgumentParser(description='Get files to FFT')
 parser.add_argument('-data_file', type=str, help='file to be FFTed')
 parser.add_argument('-N', type=int, help='divisor used for sample frequency')
 parser.add_argument('-dual', type=bool, help='dual mode or nah')
+parser.add_argument('-volt_range', type=int, help='maximum in voltage range')
 
 args = parser.parse_args()
 N = parser.N
 dual = parser.dual
-
 data_taken = args.data_file
-if dual:
-	USB_imag = np.load(data_taken)[len(data_taken)/2:]
-	USB_real = np.load(data_taken)[len(data_taken)/2:]
 
-else:
+sample_size = len(data_taken)
+
+if dual:
+	dual_imag = np.load(data_taken)[sample_size/2:]
+	dual_real = np.load(data_taken)[:sample_size/2]
+    data = np.zeros((sample_size), dtype = np.complex)
+    for i in xrange(N):
+        data[i] = np.complex(dual_real[i], dual_imag[i])
+ else:
 	data = np.load(data_taken)
 
 v_samp = 62.5e6/N
