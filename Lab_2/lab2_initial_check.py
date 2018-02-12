@@ -35,7 +35,7 @@ def getFFT(input_voltage):
 
 
 if __name__ == '__main__':
-    N = [1, 2, 3]
+    N = [1]
     volt_range = ['100mV']
 
     for divisor in N:
@@ -69,5 +69,5 @@ if __name__ == '__main__':
             plt.xlabel("Frequency (MHz)", fontsize=20)
             plt.ylabel("Power $(volt-second)^2$", fontsize=20)
             plt.title("Divisor = " + str(divisor) + ", Voltage Max = " + volts)
-            plt.xlim(-1, 1)
+            plt.savefig(str(divisor) + "_" + str(volts) + "_" + "no_test" + ".pdf")
             plt.show()

@@ -8,6 +8,7 @@ parser.add_argument('-data_file', type=str, help='file to be FFTed')
 parser.add_argument('-N', type=int, help='divisor used for sample frequency')
 parser.add_argument('-dual', type=bool, help='dual mode or nah')
 parser.add_argument('-volt_range', type=str, help='maximum in voltage range')
+parser.add_argument('-title', type=str, help='Title of plot')
 
 
 args = parser.parse_args()
@@ -17,6 +18,7 @@ divisor = args.N
 dual = args.dual
 data_taken = args.data_file
 volt_range = args.volt_range
+title = args.title
 
 def scaleToReal(analog_values, volt_range=[-1, 1]):
     type_info = np.iinfo(np.int16)
@@ -66,6 +68,8 @@ power, freqs = getPowerSpectra(data)
 plt.plot(np.fft.fftshift(freqs), np.fft.fftshift(power))
 plt.xlabel("Frequency (MHz)", fontsize=20)
 plt.ylabel("Power $(volt-second)^2$", fontsize=20)
-plt.show()
-
+plt.title(title)
+plt.ylim(0,1e6)
+plt.savefig("lab2_" + title + ".pdf")
+plt.close()
 
