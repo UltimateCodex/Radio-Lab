@@ -43,7 +43,6 @@ def getFFT(input_voltage):
     return fourier, freqs
 
 if __name__ == '__main__':
-<<<<<<< HEAD
     N = [1]
     volt_range = ['100mV']
 
@@ -58,12 +57,10 @@ if __name__ == '__main__':
 
                 dual_imag = scaleToReal(np.load(filename), [-int(volts[:-2]), int(volts[:-2])])[int(sample_size):]
                 dual_real = scaleToReal(np.load(filename), [-int(volts[:-2]), int(volts[:-2])])[:int(sample_size)]
-=======
     N = 1
     data_taken = "usb_1421MHz.npy"
     dual = True
     sample_size = len(data_taken)
->>>>>>> 51bd487edeb1adbf583d29dcb962eddb31a41b9e
 
     if dual:
         dual_imag = np.load(data_taken)[int(sample_size / 2):]
@@ -80,18 +77,10 @@ if __name__ == '__main__':
 
     power = getPowerSpectra(data)
 
+
     plt.plot(np.fft.fftshift(freqs), np.fft.fftshift(power))
     plt.xlabel("Frequency (MHz)", fontsize=20)
-    plt.ylabel("$(volt-second)$", fontsize=20)
+    plt.ylabel("Power $(volt-second)^2$", fontsize=20)
+    plt.title("Divisor = " + str(divisor) + ", Voltage Max = " + volts)
+    plt.savefig(str(divisor) + "_" + str(volts) + "_" + "no_test" + ".pdf")
     plt.show()
-
-
-<<<<<<< HEAD
-            plt.plot(np.fft.fftshift(freqs), np.fft.fftshift(power))
-            plt.xlabel("Frequency (MHz)", fontsize=20)
-            plt.ylabel("Power $(volt-second)^2$", fontsize=20)
-            plt.title("Divisor = " + str(divisor) + ", Voltage Max = " + volts)
-            plt.savefig(str(divisor) + "_" + str(volts) + "_" + "no_test" + ".pdf")
-            plt.show()
-=======
->>>>>>> 51bd487edeb1adbf583d29dcb962eddb31a41b9e

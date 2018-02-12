@@ -69,7 +69,6 @@ plt.plot(np.fft.fftshift(freqs), np.fft.fftshift(power))
 plt.xlabel("Frequency (MHz)", fontsize=20)
 plt.ylabel("Power $(volt-second)^2$", fontsize=20)
 plt.title(title)
-plt.ylim(0,1e6)
 plt.savefig("lab2_" + title + ".pdf")
 plt.close()
 
