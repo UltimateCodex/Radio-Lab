@@ -44,7 +44,7 @@ def getFFT(input_voltage):
 
 if __name__ == '__main__':
     N = 1
-    data_taken = "initial_test_100mV_1.npy"
+    data_taken = "usb_1421MHz.npy"
     dual = True
     sample_size = len(data_taken)
 
