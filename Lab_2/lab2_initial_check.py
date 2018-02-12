@@ -19,7 +19,7 @@ sample_size = len(data_taken)
 if dual:
 	dual_imag = np.load(data_taken)[sample_size/2:]
 	dual_real = np.load(data_taken)[:sample_size/2]
-    data = np.zeros((sample_size), dtype = np.complex)
+        data = np.zeros((sample_size), dtype = np.complex)
     for i in xrange(N):
         data[i] = np.complex(dual_real[i], dual_imag[i])
  else:
