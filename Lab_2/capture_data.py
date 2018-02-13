@@ -12,7 +12,7 @@ parser.add_argument('-N', default = 16000, type=int, help='number of samples to 
 parser.add_argument('-name', default = 'data', type=str, help='name of file')
 parser.add_argument('-n', default = 1, type=int, help='number of blocks to collect')
 parser.add_argument('-d', default = 1, type=int, help='divisor used for sample frequency')
-parser.add_argument('-dual', default = False, type=bool, help='dual mode or nah')
+parser.add_argument('-dual', default = True, type=bool, help='dual mode or nah')
 parser.add_argument('-volt_range', default = '100mV', type=str, help='maximum in voltage range')
 
 
