@@ -1,19 +1,5 @@
-import argparse
-
 import matplotlib.pyplot as plt
 import numpy as np
-
-# parser = argparse.ArgumentParser(description='Get files to FFT')
-#
-# parser.add_argument('-data_file', type=str, help='file to be FFTed')
-# parser.add_argument('-N', type=int, help='divisor used for sample frequency')
-# parser.add_argument('-dual', type=bool, help='dual mode or nah')
-# parser.add_argument('-volt_range', type=int, help='maximum in voltage range')
-#
-# args = parser.parse_args()
-# N = parser.N
-# dual = parser.dual
-# data_taken = args.data_file
 
 
 def scaleToReal(analog_values, volt_range=[-1, 1]):
@@ -26,7 +12,7 @@ def scaleToReal(analog_values, volt_range=[-1, 1]):
     a2 = type_info.max
 
     real_values = []
-    real2_values = []
+
     for i in analog_values:
         real_values.append(float(x2 - x1) * float(i - a1) / float(a2 - a1) + x1)
     return np.asarray(real_values)
@@ -77,8 +63,7 @@ if __name__ == '__main__':
 
     power = getPowerSpectra(data)
 
-
-    plt.plot(np.fft.fftshift(freqs), np.fft.fftshift(power))
+    plt.semilogy(np.fft.fftshift(freqs), np.fft.fftshift(power))
     plt.xlabel("Frequency (MHz)", fontsize=20)
     plt.ylabel("Power $(volt-second)^2$", fontsize=20)
     plt.title("Divisor = " + str(divisor) + ", Voltage Max = " + volts)
